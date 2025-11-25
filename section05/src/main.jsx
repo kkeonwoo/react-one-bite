@@ -1,5 +1,5 @@
 import {createRoot} from 'react-dom/client';
 import './index.css';
-import App02 from './App02.jsx';
+import HookExam from './components/HookExam.jsx';
 
-createRoot(document.getElementById('root')).render(<App02 />);
+createRoot(document.getElementById('root')).render(<HookExam />);
