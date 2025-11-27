@@ -1,0 +1,18 @@
+import './TodoItem.css';
+
+export default function TodoItem({id, isDone, content, date, onUpdate, onDelete}) {
+    const onChangeCheckbox = () => {
+        onUpdate(id);
+    };
+    const onClickButton = () => {
+        onDelete(id);
+    };
+    return (
+        <div className='TodoItem'>
+            <input readOnly checked={isDone} onChange={onChangeCheckbox} type='checkbox' />
+            <div className='content'>{content}</div>
+            <div className='date'>{new Date(date).toLocaleDateString()}</div>
+            <button onClick={onClickButton}>삭제</button>
+        </div>
+    );
+}
