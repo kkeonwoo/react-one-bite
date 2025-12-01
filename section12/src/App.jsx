@@ -21,15 +21,27 @@ import Notfound from './pages/Noutfound';
 const mockData = [
     {
         id: 1,
-        createDate: new Date().getTime(),
+        createDate: new Date('2025-12-02').getTime(),
         emotionId: 1,
         content: '1번 일기 내용',
     },
     {
         id: 2,
-        createDate: new Date().getTime(),
+        createDate: new Date('2025-12-25').getTime(),
         emotionId: 2,
         content: '2번 일기 내용',
+    },
+    {
+        id: 3,
+        createDate: new Date('2025-11-03').getTime(),
+        emotionId: 3,
+        content: '3번 일기 내용',
+    },
+    {
+        id: 4,
+        createDate: new Date('2026-01-12').getTime(),
+        emotionId: 4,
+        content: '4번 일기 내용',
     },
 ];
 
@@ -39,19 +51,19 @@ function reducer(state, action) {
             return [action.data, ...state];
         case 'UPDATE':
             return state.map((item) => {
-                String(item.id) === String(action.data.id) ? action.data : item;
+                return String(item.id) === String(action.data.id) ? action.data : item;
             });
         case 'DELETE':
             return state.filter((item) => {
-                String(item.id) !== String(action.data.id);
+                return String(item.id) !== String(action.data.id);
             });
         default:
             return state;
     }
 }
 
-const DiaryStateContext = createContext();
-const DiaryDispatchContext = createContext();
+export const DiaryStateContext = createContext();
+export const DiaryDispatchContext = createContext();
 
 function App() {
     const idRef = useRef(3);
